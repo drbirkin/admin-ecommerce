@@ -39,7 +39,7 @@ export function LoginForm() {
       </div>
       <button
         type="submit"
-        className="button bg-indigo-600 mt-8"
+        className="button bg-indigo-600 mt-8 hover:bg-indigo-500 transition-all"
         // onClick={() => setLoading(!loading)}
       >
         <span className="pb-1">Sign in</span>
