@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro'
+
 export function LoginForm() {
   return (
     <form className="w-full flex flex-col">
@@ -7,7 +10,8 @@ export function LoginForm() {
       <input
         type="text"
         id="username"
-        className="bg-white border-zinc-300 border rounded-md h-10 mt-2"
+        className="bg-white border-zinc-300 border rounded-md h-10 mt-2 text-black focus:border-indigo-500 focus:ring-indigo-200"
+        placeholder="username or email"
         required
       />
       <label htmlFor="email" className="text-black text-left mt-5">
@@ -16,7 +20,8 @@ export function LoginForm() {
       <input
         type="password"
         id="password"
-        className="bg-white border-zinc-300 border rounded-md h-10 mt-2"
+        className="bg-white border-zinc-300 border rounded-md h-10 mt-2 text-black focus:border-indigo-500 focus:ring-indigo-200"
+        placeholder="•••••"
         required
       />
       <div className="flex justify-between mt-4">
@@ -29,7 +34,7 @@ export function LoginForm() {
           />
           <span className="text-black ml-3">Remember account</span>
         </label>
-
+        
         <span
           // onClick={() => navigate('forgotPassword')}
           className="forget cursor-pointer text-indigo-500 font-medium"
