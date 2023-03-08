@@ -1,5 +1,5 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro'
+import {AiOutlineUser} from 'react-icons/ai'
+import {BiLockOpenAlt} from 'react-icons/bi'
 
 export function LoginForm() {
   return (
@@ -7,23 +7,33 @@ export function LoginForm() {
       <label htmlFor="email" className="text-black text-left mt-5">
         Email or username
       </label>
-      <input
-        type="text"
-        id="username"
-        className="bg-white border-zinc-300 border rounded-md h-10 mt-2 text-black focus:border-indigo-500 focus:ring-indigo-200"
-        placeholder="username or email"
-        required
-      />
+      <div className='group relative mt-2'>
+        <div className='absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-zinc-400'>
+          <AiOutlineUser/>
+        </div>
+        <input
+          type="text"
+          id="username"
+          className="bg-white border-zinc-300 border rounded-md h-10 w-full pl-10 text-black focus:border-indigo-200 focus:ring-indigo-200"
+          placeholder="username or email"
+          required
+        />
+      </div>
       <label htmlFor="email" className="text-black text-left mt-5">
         Password
       </label>
-      <input
-        type="password"
-        id="password"
-        className="bg-white border-zinc-300 border rounded-md h-10 mt-2 text-black focus:border-indigo-500 focus:ring-indigo-200"
-        placeholder="•••••"
-        required
-      />
+      <div className='relative mt-2 '>
+        <div className='absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-zinc-400'>
+          <BiLockOpenAlt/>
+        </div>
+        <input
+          type="password"
+          id="password"
+          className="bg-white border-zinc-300 border rounded-md h-10 w-full pl-10 text-black focus:border-indigo-200 focus:ring-indigo-200"
+          placeholder="•••••"
+          required
+        />
+      </div>
       <div className="flex justify-between mt-4">
         <label className="remember flex items-center">
           <input
