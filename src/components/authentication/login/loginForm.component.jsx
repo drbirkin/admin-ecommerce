@@ -47,7 +47,7 @@ export function LoginForm() {
         
         <span
           // onClick={() => navigate('forgotPassword')}
-          className="forget cursor-pointer text-indigo-500 font-medium"
+          className="cursor-pointer text-indigo-500 font-medium"
         >
           Forgot password?
         </span>
@@ -59,6 +59,15 @@ export function LoginForm() {
       >
         <span className="pb-1">Sign in</span>
       </button>
+      <p className="cursor-pointer text-zinc-500 mt-6">
+        Don't have an account?{' '}
+        <span
+          // onClick={() => navigate('/auth/register')}
+          className="font-medium underline text-black"
+        >
+          Sign up for free
+        </span>
+      </p>
     </form>
   )
 }
