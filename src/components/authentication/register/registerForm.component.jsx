@@ -1,17 +1,17 @@
 import { AiOutlineUser } from 'react-icons/ai'
-import { BiLockOpenAlt } from 'react-icons/bi'
+import { BiLockAlt } from 'react-icons/bi'
+import { HiOutlineMail } from 'react-icons/hi'
 import { Link } from 'react-router-dom'
-
-export default function LoginForm() {
+export default function RegisterForm() {
   return (
     <>
       <h1 className="text-black font-semibold text-4xl font-open-sans">
-        Sign in to your account
+        Create a new account
       </h1>
       <form className="w-full flex flex-col">
-        {/* username or email */}
+        {/* name */}
         <label htmlFor="username" className="text-black text-left mt-5">
-          Email or username
+          Username
         </label>
         <div className="group relative mt-2">
           <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-zinc-400">
@@ -21,7 +21,23 @@ export default function LoginForm() {
             type="text"
             id="username"
             className="bg-white border-zinc-300 border rounded-md h-10 w-full pl-10 text-black focus:border-indigo-200 focus:ring-indigo-200"
-            placeholder="username or email"
+            placeholder="username"
+            required
+          />
+        </div>
+        {/* email */}
+        <label htmlFor="email" className="text-black text-left mt-5">
+          Email
+        </label>
+        <div className="group relative mt-2">
+          <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-zinc-400">
+            <HiOutlineMail />
+          </div>
+          <input
+            type="email"
+            id="email"
+            className="bg-white border-zinc-300 border rounded-md h-10 w-full pl-10 text-black focus:border-indigo-200 focus:ring-indigo-200"
+            placeholder="example@email.com"
             required
           />
         </div>
@@ -31,7 +47,7 @@ export default function LoginForm() {
         </label>
         <div className="relative mt-2 ">
           <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-zinc-400">
-            <BiLockOpenAlt />
+            <BiLockAlt />
           </div>
           <input
             type="password"
@@ -41,37 +57,35 @@ export default function LoginForm() {
             required
           />
         </div>
-        <div className="flex justify-between mt-4">
-          {/* remember account */}
-          <label className="remember flex items-center">
-            <input
-              type="checkbox"
-              id="remember"
-              className="w-4 h-4 bg-white text-indigo-500 border-zinc-300 border rounded focus:ring-indigo-500 focus:ring-opacity-25 dark:focus:ring-indigo-500 dark:bg-white"
-              // value={remember}
-            />
-            <span className="text-black ml-3">Remember account</span>
-          </label>
-          {/* forgot passwor */}
-          <span
-            // onClick={() => navigate('forgotPassword')}
-            className="cursor-pointer text-indigo-500 font-medium"
-          >
-            Forgot password?
-          </span>
+        {/* confirm password */}
+        <label htmlFor="confirmpassword" className="text-black text-left mt-5">
+          Confirm password
+        </label>
+        <div className="relative mt-2 ">
+          <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-zinc-400">
+            <BiLockAlt />
+          </div>
+          <input
+            type="password"
+            id="confirmpassword"
+            className="bg-white border-zinc-300 border rounded-md h-10 w-full pl-10 text-black focus:border-indigo-200 focus:ring-indigo-200"
+            placeholder="•••••"
+            required
+          />
         </div>
+
         <button
           type="submit"
           className="button bg-indigo-600 mt-8 hover:bg-indigo-500 transition-all"
           // onClick={() => setLoading(!loading)}
         >
-          <span className="pb-1">Sign in</span>
+          <span className="pb-1">Sign up</span>
         </button>
         <p className="cursor-default text-zinc-500 mt-6">
-          Don't have an account?{' '}
-          <Link to="/auth/register">
+          Already have an account?{' '}
+          <Link to="/auth/login">
             <span className="font-medium underline text-black">
-              Sign up for free
+              Sign in here
             </span>
           </Link>
         </p>
