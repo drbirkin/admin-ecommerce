@@ -1,14 +1,31 @@
+import { useState } from 'react'
 import { AiOutlineUser } from 'react-icons/ai'
 import { BiLockOpenAlt } from 'react-icons/bi'
+import { useQuery } from 'react-query'
 import { Link } from 'react-router-dom'
 
+// axios
+import { loginUser } from '../../../api/authentication/authentication'
+
 export default function LoginForm() {
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [remember, setRemember]= useState('')
+
+  const loginHandler = (event) => {
+    event.preventDefault()
+    const { isLoading, isError, data, error } = useQuery('login', loginUser.bind(this, username,
+      password,
+      remember))
+    console.log(error)
+  }
+
   return (
     <>
       <h1 className="text-black font-semibold text-4xl font-open-sans">
         Sign in to your account
       </h1>
-      <form className="w-full flex flex-col">
+      <form className="w-full flex flex-col" onSubmit = {loginHandler}>
         {/* username or email */}
         <label htmlFor="username" className="text-black text-left mt-5">
           Email or username
@@ -20,6 +37,8 @@ export default function LoginForm() {
           <input
             type="text"
             id="username"
+            value = {username}
+            onChange={(e) => setUsername(e.target.value)}
             className="bg-white border-zinc-300 border rounded-md h-10 w-full pl-10 text-black focus:border-indigo-200 focus:ring-indigo-200"
             placeholder="username or email"
             required
@@ -36,6 +55,8 @@ export default function LoginForm() {
           <input
             type="password"
             id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
             className="bg-white border-zinc-300 border rounded-md h-10 w-full pl-10 text-black focus:border-indigo-200 focus:ring-indigo-200"
             placeholder="•••••"
             required
@@ -48,7 +69,7 @@ export default function LoginForm() {
               type="checkbox"
               id="remember"
               className="w-4 h-4 bg-white text-indigo-500 border-zinc-300 border rounded focus:ring-indigo-500 focus:ring-opacity-25 dark:focus:ring-indigo-500 dark:bg-white"
-              // value={remember}
+              onChange={(e) => setRemember(e.target.checked)}
             />
             <span className="text-black ml-3">Remember account</span>
           </label>
