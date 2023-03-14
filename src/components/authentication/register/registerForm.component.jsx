@@ -2,6 +2,9 @@ import { AiOutlineUser } from 'react-icons/ai'
 import { BiLockAlt } from 'react-icons/bi'
 import { HiOutlineMail } from 'react-icons/hi'
 import { Link } from 'react-router-dom'
+
+// buttons
+import { SubmitButton } from '../../buttons/buttons.component'
 export default function RegisterForm() {
   return (
     <>
@@ -74,13 +77,9 @@ export default function RegisterForm() {
           />
         </div>
 
-        <button
-          type="submit"
-          className="button bg-indigo-600 mt-8 hover:bg-indigo-500 transition-all focus:outline-indigo-200 focus:outline-2 focus:outline focus:outline-offset-2"
-          // onClick={() => setLoading(!loading)}
-        >
+       <SubmitButton>
           <span className="pb-1">Sign up</span>
-        </button>
+       </SubmitButton>
         <p className="cursor-default text-zinc-500 mt-6">
           Already have an account?{' '}
           <Link to="/auth/login">
