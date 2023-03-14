@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { AiOutlineUser } from 'react-icons/ai'
 import { BiLockOpenAlt } from 'react-icons/bi'
-import { useQuery } from '@tanstack/react-query'
+import { useMutation } from '@tanstack/react-query'
 import { Link } from 'react-router-dom'
 
 // axios
@@ -12,13 +12,17 @@ export default function LoginForm() {
   const [password, setPassword] = useState('')
   const [remember, setRemember] = useState('')
   // https://codesandbox.io/s/test-react-query-react-form-i2fk2?file=/src/App.js
+  // https://medium.com/analytics-vidhya/how-to-post-and-fetch-data-using-react-query-4c3280c0ef96
+  const { mutate } = useMutation({
+    mutationFn: loginUser.bind(this, username, password, remember),
+    onSuccess: (data) => {
+      console.log(data)
+    },
+  })
   const loginHandler = (event) => {
     event.preventDefault()
-    console.log('react querying')
-    const info = useQuery({
-      queryKey: ['login'],
-      queryFn: loginUser.bind(this, username, password, remember),
-    })
+    console.log('loading')
+    mutate()
   }
 
   return (
