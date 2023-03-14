@@ -10,13 +10,14 @@ import { loginUser } from '../../../api/authentication/authentication'
 export default function LoginForm() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const [remember, setRemember]= useState('')
+  const [remember, setRemember] = useState('')
 
   const loginHandler = (event) => {
     event.preventDefault()
-    const { isLoading, isError, data, error } = useQuery('login', loginUser.bind(this, username,
-      password,
-      remember))
+    const { isLoading, isError, data, error } = useQuery(
+      'login',
+      loginUser.bind(this, username, password, remember)
+    )
     console.log(error)
   }
 
@@ -25,7 +26,7 @@ export default function LoginForm() {
       <h1 className="text-black font-semibold text-4xl font-open-sans">
         Sign in to your account
       </h1>
-      <form className="w-full flex flex-col" onSubmit = {loginHandler}>
+      <form className="w-full flex flex-col" onSubmit={loginHandler}>
         {/* username or email */}
         <label htmlFor="username" className="text-black text-left mt-5">
           Email or username
@@ -37,7 +38,7 @@ export default function LoginForm() {
           <input
             type="text"
             id="username"
-            value = {username}
+            value={username}
             onChange={(e) => setUsername(e.target.value)}
             className="bg-white border-zinc-300 border rounded-md h-10 w-full pl-10 text-black focus:border-indigo-200 focus:ring-indigo-200"
             placeholder="username or email"
@@ -83,7 +84,7 @@ export default function LoginForm() {
         </div>
         <button
           type="submit"
-          className="button bg-indigo-600 mt-8 hover:bg-indigo-500 transition-all"
+          className="button bg-indigo-600 mt-8 hover:bg-indigo-500 transition-all focus:outline-indigo-200 focus:outline-2 focus:outline focus:outline-offset-2"
           // onClick={() => setLoading(!loading)}
         >
           <span className="pb-1">Sign in</span>

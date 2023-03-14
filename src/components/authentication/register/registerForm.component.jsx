@@ -76,7 +76,7 @@ export default function RegisterForm() {
 
         <button
           type="submit"
-          className="button bg-indigo-600 mt-8 hover:bg-indigo-500 transition-all"
+          className="button bg-indigo-600 mt-8 hover:bg-indigo-500 transition-all focus:outline-indigo-200 focus:outline-2 focus:outline focus:outline-offset-2"
           // onClick={() => setLoading(!loading)}
         >
           <span className="pb-1">Sign up</span>
