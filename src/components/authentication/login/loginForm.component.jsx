@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { AiOutlineUser } from 'react-icons/ai'
+import { AiOutlineUser, AiOutlineLoading3Quarters } from 'react-icons/ai'
 import { BiLockOpenAlt } from 'react-icons/bi'
 import { useMutation } from '@tanstack/react-query'
 import { Link } from 'react-router-dom'
@@ -7,13 +7,16 @@ import { Link } from 'react-router-dom'
 // axios
 import { loginUser } from '../../../api/authentication/authentication'
 
+// buttons
+import { SubmitButton } from '../../buttons/buttons.component'
+
 export default function LoginForm() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [remember, setRemember] = useState('')
   // https://codesandbox.io/s/test-react-query-react-form-i2fk2?file=/src/App.js
   // https://medium.com/analytics-vidhya/how-to-post-and-fetch-data-using-react-query-4c3280c0ef96
-  const { mutate } = useMutation({
+  const { mutate, isLoading, isSuccess } = useMutation({
     mutationFn: loginUser.bind(this, username, password, remember),
     onSuccess: (data) => {
       console.log(data)
@@ -86,13 +89,9 @@ export default function LoginForm() {
             Forgot password?
           </span>
         </div>
-        <button
-          type="submit"
-          className="button bg-indigo-600 mt-8 hover:bg-indigo-500 transition-all focus:outline-indigo-200 focus:outline-2 focus:outline focus:outline-offset-2"
-          // onClick={() => setLoading(!loading)}
-        >
-          <span className="pb-1">Sign in</span>
-        </button>
+        <SubmitButton>
+          {isLoading?(<AiOutlineLoading3Quarters />):(<span className="pb-1">Sign in</span>)}
+        </SubmitButton>        
         <p className="cursor-default text-zinc-500 mt-6">
           Don't have an account?{' '}
           <Link to="/auth/register">
