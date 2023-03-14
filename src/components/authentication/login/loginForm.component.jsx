@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { AiOutlineUser } from 'react-icons/ai'
 import { BiLockOpenAlt } from 'react-icons/bi'
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 import { Link } from 'react-router-dom'
 
 // axios
@@ -11,14 +11,14 @@ export default function LoginForm() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [remember, setRemember] = useState('')
-
+  // https://codesandbox.io/s/test-react-query-react-form-i2fk2?file=/src/App.js
   const loginHandler = (event) => {
     event.preventDefault()
-    const { isLoading, isError, data, error } = useQuery(
-      'login',
-      loginUser.bind(this, username, password, remember)
-    )
-    console.log(error)
+    console.log('react querying')
+    const info = useQuery({
+      queryKey: ['login'],
+      queryFn: loginUser.bind(this, username, password, remember),
+    })
   }
 
   return (
