@@ -1,9 +1,9 @@
-import axios from "axios";
-
+import axios from 'axios'
+// proxy api request
 const Axios = axios.create({
-    baseURL: 'http://localhost:3500/',
-    headers: {'Content-Type': 'application/json'},
-    withCredentials: true,
+  baseURL: '/api',
+  headers: { 'Content-Type': 'application/json' },
+  withCredentials: true,
 })
 
-export default Axios;
+export default Axios
