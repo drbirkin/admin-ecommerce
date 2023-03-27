@@ -27,7 +27,7 @@ function App() {
           //   if (isError || error) console.error('error', error)
           //   return data
           // },
-          loader: verifyUser,
+          // loader: verifyUser,
           children: [
             {
               index: true,
