@@ -1,17 +1,21 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-
 // https://vitejs.dev/config/
+// https://dev.to/ghacosta/til-setting-up-proxy-server-on-vite-2cng
 export default defineConfig({
   plugins: [react()],
   server: {
     port: 5173,
+    // https: {
+    //   pfx: PFX,
+    //   passphrase: PFX_PASSPHRASE,
+    // },
     proxy: {
       '/api': {
-        target: 'https://localhost:3500',
+        target: 'http://localhost:3500',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
         // secure: false,
+        // rewrite: (path) => path.replace(/^\/api/, ''),
         // ws: true,
         // debugging
         configure: (proxy, _options) => {

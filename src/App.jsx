@@ -1,29 +1,55 @@
 import './App.css'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
 
 import AuthLayout from './components/authentication/authLayout/authLayout.component'
 import AuthForm from './components/authentication/authForm.component'
-
-const router = createBrowserRouter([
-  {
-    path: '/',
-    children: [
-      {
-        path: 'auth',
-        element: <AuthLayout />,
-        children: [
-          {
-            // index: true,
-            path: ':authType',
-            element: <AuthForm />,
-          },
-        ],
-      },
-    ],
-  },
-])
+import Protect from './components/protection/protect.component'
+import Home from './components/userpanel/home.component'
+import { useQuery } from '@tanstack/react-query'
+import { verifyUser } from './api/authentication/authentication'
 
 function App() {
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      children: [
+        {
+          path: '/',
+          element: <Protect />,
+          errorElement: <Navigate to="/auth/login" />,
+          // loader: () => {
+          //   const { data, isError, isLoading, error } = useQuery({
+          //     queryKey: ['auth'],
+          //     queryFn: verifyUser,
+          //     // enabled: false,
+          //   })
+          //   if (isLoading) console.log('Verify user credentials')
+          //   if (isError || error) console.error('error', error)
+          //   return data
+          // },
+          loader: verifyUser,
+          children: [
+            {
+              index: true,
+              element: <Home />,
+            },
+          ],
+        },
+        {
+          path: 'auth',
+          element: <AuthLayout />,
+          children: [
+            {
+              // index: true,
+              path: ':authType',
+              element: <AuthForm />,
+            },
+          ],
+        },
+      ],
+    },
+  ])
+
   return <RouterProvider router={router} />
 }
 
