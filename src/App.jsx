@@ -5,8 +5,11 @@ import AuthLayout from './components/authentication/authLayout/authLayout.compon
 import AuthForm from './components/authentication/authForm.component'
 import Protect from './components/protection/protect.component'
 import Home from './components/userpanel/home.component'
+import PageLayout from './components/pages/pageLayout.component'
 import { useQuery } from '@tanstack/react-query'
 import { verifyUser } from './api/authentication/authentication'
+import Navigations from './components/navigations/navigations.component'
+import LandingPage from './components/subpages/landingpage/landingpage.component'
 
 function App() {
   const router = createBrowserRouter([
@@ -14,7 +17,7 @@ function App() {
       path: '/',
       children: [
         {
-          path: '/',
+          path: '',
           element: <Protect />,
           errorElement: <Navigate to="/auth/login" />,
           // loader: () => {
@@ -30,8 +33,20 @@ function App() {
           // loader: verifyUser,
           children: [
             {
-              index: true,
-              element: <Home />,
+              path: '',
+              element: <Navigations />,
+              children: [
+                {
+                  path: '',
+                  element: <PageLayout/>,
+                  children: [
+                    {
+                      index: true,
+                      element: <LandingPage/>
+                    }
+                  ]
+                }
+              ]
             },
           ],
         },

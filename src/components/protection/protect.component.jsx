@@ -7,9 +7,8 @@ export default function Protect() {
   return !document ? (
     <Navigate to="/auth/login" />
   ) : (
-    <div className="w-full h-full grid grid-cols-3 gap-0">
+    <div className="w-full h-full flex">
       <Outlet />
-      <div className="col-span-2 h-full bg-black-200"></div>
     </div>
   )
 }
