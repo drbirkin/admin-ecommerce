@@ -68,6 +68,10 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.active svg {
+  color: #4f46e5;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
