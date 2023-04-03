@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { AiOutlineUser, AiOutlineLoading3Quarters } from 'react-icons/ai'
 import { BiLockOpenAlt } from 'react-icons/bi'
 import { useMutation } from '@tanstack/react-query'
-import { Link } from 'react-router-dom'
+import { Link, redirect } from 'react-router-dom'
 
 // axios
 import { loginUser } from '../../../api/authentication/authentication'
@@ -26,6 +26,7 @@ export default function LoginForm() {
     event.preventDefault()
     console.log('loading')
     mutate()
+    isSuccess && redirect('/')
   }
 
   return (
@@ -90,8 +91,12 @@ export default function LoginForm() {
           </span>
         </div>
         <SubmitButton>
-          {isLoading?(<AiOutlineLoading3Quarters />):(<span className="pb-1">Sign in</span>)}
-        </SubmitButton>        
+          {isLoading ? (
+            <AiOutlineLoading3Quarters />
+          ) : (
+            <span className="pb-1">Sign in</span>
+          )}
+        </SubmitButton>
         <p className="cursor-default text-zinc-500 mt-6">
           Don't have an account?{' '}
           <Link to="/auth/register">

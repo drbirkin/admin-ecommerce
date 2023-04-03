@@ -30,7 +30,7 @@ function App() {
           //   if (isError || error) console.error('error', error)
           //   return data
           // },
-          // loader: verifyUser,
+          loader: verifyUser,
           children: [
             {
               path: '',
@@ -38,15 +38,15 @@ function App() {
               children: [
                 {
                   path: '',
-                  element: <PageLayout/>,
+                  element: <PageLayout />,
                   children: [
                     {
                       index: true,
-                      element: <LandingPage/>
-                    }
-                  ]
-                }
-              ]
+                      element: <LandingPage />,
+                    },
+                  ],
+                },
+              ],
             },
           ],
         },
