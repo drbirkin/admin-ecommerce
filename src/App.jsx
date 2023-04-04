@@ -40,8 +40,13 @@ function App() {
                   path: '',
                   element: <PageLayout />,
                   children: [
+                    // TODO: add children to landing pages
+                    // {
+                    //   index: true,
+                    //   element: <LandingPage />,
+                    // },
                     {
-                      path: ':pageType',
+                      path: ':pageType/*',
                       element: <LandingPage />,
                     },
                   ],

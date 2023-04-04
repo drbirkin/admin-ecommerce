@@ -3,7 +3,6 @@ import { menuItems } from '../../utils/menu/menu.utils'
 
 export default function NavItems() {
   // * https://dribbble.com/shots/20108403-Odasta-Admin-Dashboard
-  console.log(menuItems.length)
   return (
     <div className="mt-4 p-4">
       {menuItems.map((item, index) => (

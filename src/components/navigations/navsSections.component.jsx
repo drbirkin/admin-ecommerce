@@ -16,7 +16,7 @@ export default function NavSections({ section: { type, items, icons } }) {
                 isPending
                   ? 'pending font-light mb-3 flex items-center p-2 pl-6'
                   : isActive
-                  ? 'active bg-indigo-200 text-indigo-600 font-regular mb-3 flex items-center p-2 pl-6 rounded'
+                  ? 'active bg-indigo-100 text-indigo-400 font-regular mb-3 flex items-center p-2 pl-6 rounded'
                   : 'group text-black font-light mb-3 flex items-center p-2 pl-6'
               }
               key={item}
