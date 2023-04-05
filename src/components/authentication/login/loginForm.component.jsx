@@ -92,7 +92,7 @@ export default function LoginForm() {
         </div>
         <SubmitButton>
           {isLoading ? (
-            <AiOutlineLoading3Quarters />
+            <AiOutlineLoading3Quarters className='animate-spin' />
           ) : (
             <span className="pb-1">Sign in</span>
           )}

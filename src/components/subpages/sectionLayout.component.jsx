@@ -1,7 +1,7 @@
 import { useParams, Outlet } from 'react-router-dom'
 
 export default function LandingPage() {
-  const { pageType } = useParams()
+  // const { pageType } = useParams()
   // console.log('check:', useParams())
   // if(!pageType) <Navigate to = "/home"/>
   return (

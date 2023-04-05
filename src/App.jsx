@@ -9,9 +9,12 @@ import PageLayout from './components/pages/pageLayout.component'
 import { useQuery } from '@tanstack/react-query'
 import { verifyUser } from './api/authentication/authentication'
 import Navigations from './components/navigations/navigations.component'
-import LandingPage from './components/subpages/landingpage/sectionLayout.component'
-import HomeSection from './components/subpages/landingpage/home/homeSection.component'
-import OrderSection from './components/subpages/landingpage/orders/ordersSection.component'
+import LandingPage from './components/subpages/sectionLayout.component'
+import HomeSection from './components/subpages/home/homeSection.component'
+import OrderSection from './components/subpages/orders/ordersSection.component'
+import ProductSection from './components/subpages/products/products.component'
+import ProductOverview from './components/subpages/products/product overview/productOverview.component'
+import Inventory from './components/subpages/products/inventory/inventory.component'
 
 function App() {
   const router = createBrowserRouter([
@@ -54,6 +57,20 @@ function App() {
                         {
                           path: 'orders',
                           element: <OrderSection />,
+                        },
+                        {
+                          path: 'products',
+                          element: <ProductSection />,
+                          children: [
+                            {
+                              index: true,
+                              element: <ProductOverview/>
+                            },
+                            {
+                              path: 'inventory',
+                              element: <Inventory/>
+                            }
+                          ]
                         },
                       ],
                     },

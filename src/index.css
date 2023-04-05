@@ -72,6 +72,10 @@ button:focus-visible {
   color: #4f46e5;
 }
 
+.active svg:last-child {
+  
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
