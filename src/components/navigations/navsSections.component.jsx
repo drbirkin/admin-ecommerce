@@ -11,7 +11,7 @@ export default function NavSections({ section: { type, items, icons } }) {
           const Icon = icons[index]
           return (
             <NavLink
-              to={`/${item}`}
+              to={`/${item !== 'home' ? item : ''}`}
               className={({ isActive, isPending }) =>
                 isPending
                   ? 'pending font-light mb-3 flex items-center p-2 pl-6'
