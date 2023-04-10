@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { AiOutlineUser, AiOutlineLoading3Quarters } from 'react-icons/ai'
 import { BiLockOpenAlt } from 'react-icons/bi'
-import { useMutation } from '@tanstack/react-query'
-import { Link, redirect } from 'react-router-dom'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { Link, useNavigate } from 'react-router-dom'
 
 // axios
 import { loginUser } from '../../../api/authentication/authentication'
@@ -14,21 +14,25 @@ export default function LoginForm() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [remember, setRemember] = useState('')
+  const queryClient = useQueryClient()
+  const navigate = useNavigate()
   // https://codesandbox.io/s/test-react-query-react-form-i2fk2?file=/src/App.js
   // https://medium.com/analytics-vidhya/how-to-post-and-fetch-data-using-react-query-4c3280c0ef96
-  const { mutate, isLoading, isSuccess } = useMutation({
-    mutationFn: loginUser.bind(this, username, password, remember),
-    onSuccess: (data) => {
-      console.log(data)
-    },
-  })
-  const loginHandler = (event) => {
+  // const { mutate, isLoading, isSuccess } = useMutation({
+  //   mutationFn: async () => await loginUser(username, password, remember),
+  //   onSuccess: (data) => {
+  //     console.log('response from login: ', data)
+  //     // queryClient.invalidateQueries(['auth'])
+  //     navigate('/')
+  //   },
+  // })
+  const loginHandler = async (event) => {
     event.preventDefault()
-    console.log('loading')
-    mutate()
-    isSuccess && redirect('/')
+    console.log('logging user')
+    // mutate()
+    await loginUser(username, password, remember)
+    navigate('/')
   }
-
   return (
     <>
       <h1 className="text-black font-semibold text-4xl font-open-sans">
@@ -91,11 +95,12 @@ export default function LoginForm() {
           </span>
         </div>
         <SubmitButton>
-          {isLoading ? (
-            <AiOutlineLoading3Quarters className='animate-spin' />
+          {/* {isLoading ? (
+            <AiOutlineLoading3Quarters className="animate-spin" />
           ) : (
             <span className="pb-1">Sign in</span>
-          )}
+          )} */}
+          <span className="pb-1">Sign in</span>
         </SubmitButton>
         <p className="cursor-default text-zinc-500 mt-6">
           Don't have an account?{' '}

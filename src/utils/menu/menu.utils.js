@@ -9,7 +9,21 @@ import { FiSettings } from 'react-icons/fi'
 export const menuItems = [
   {
     type: 'main menu',
-    items: [{menu:'home'}, {menu:'orders'}, {menu: 'products', subitems: [{menu: 'overview'}, {menu: 'inventory'}]}, {menu: 'customers'}, {menu: 'reports'}, {menu: 'discounts'}],
+    items: [
+      { menu: 'home' },
+      { menu: 'orders' },
+      {
+        menu: 'products',
+        subitems: [
+          { menu: 'overview' },
+          { menu: 'inventory' },
+          { menu: 'collections' },
+        ],
+      },
+      { menu: 'customers' },
+      { menu: 'reports' },
+      { menu: 'discounts' },
+    ],
     icons: [
       RxDashboard,
       CgShoppingBag,
@@ -21,12 +35,12 @@ export const menuItems = [
   },
   {
     type: 'online store',
-    items: [{menu: 'store'}],
+    items: [{ menu: 'store' }],
     icons: [BiStore],
   },
   {
     type: 'account',
-    items: [{menu: 'settings'}],
+    items: [{ menu: 'settings' }],
     icons: [FiSettings],
   },
 ]
