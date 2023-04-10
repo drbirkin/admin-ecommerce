@@ -4,6 +4,7 @@ import { Navigate, Outlet, useLoaderData } from 'react-router-dom'
 
 // https://tkdodo.eu/blog/react-query-meets-react-router
 // https://reactrouter.com/en/main/guides/data-libs
+// https://copyprogramming.com/howto/react-query-usequery-returns-undefined-and-component-does-not-rerender
 const verificationQuery = (id = null) => ({
   queryKey: ['auth', id],
   queryFn: async () => await verifyUser(),
