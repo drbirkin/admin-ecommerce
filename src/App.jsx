@@ -53,7 +53,6 @@ const router = createBrowserRouter([
                 path: '',
                 element: <PageLayout />,
                 children: [
-                  // TODO: add children to landing pages
                   {
                     path: '',
                     element: <LandingPage />,
@@ -88,6 +87,7 @@ const router = createBrowserRouter([
           },
         ],
       },
+      // loader to verify user with redux
       {
         path: 'auth',
         element: <AuthLayout />,

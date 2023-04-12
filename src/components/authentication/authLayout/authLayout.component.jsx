@@ -1,4 +1,4 @@
-import { Outlet, useParams, Navigate } from 'react-router-dom'
+import { Outlet, useParams, Navigate, useLoaderData } from 'react-router-dom'
 
 export default function AuthLayout() {
   const { authType } = useParams()
