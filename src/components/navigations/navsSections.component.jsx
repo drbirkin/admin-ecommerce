@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom'
 import { RiArrowDropDownLine } from 'react-icons/ri'
-
+import { Fragment } from 'react'
 export default function NavSections({ section: { type, items, icons } }) {
   return (
     <div className="text-left">
@@ -9,7 +9,7 @@ export default function NavSections({ section: { type, items, icons } }) {
         {items.map(({ menu, subitems }, index) => {
           const Icon = icons[index]
           return (
-            <>
+            <Fragment key={menu}>
               <NavLink
                 to={`/${menu !== 'home' ? menu : ''}`}
                 className={({ isActive, isPending }) =>
@@ -51,7 +51,7 @@ export default function NavSections({ section: { type, items, icons } }) {
                   ))}
                 </div>
               )}
-            </>
+            </Fragment>
           )
         })}
       </div>

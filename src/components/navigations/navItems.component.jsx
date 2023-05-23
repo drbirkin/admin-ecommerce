@@ -6,8 +6,15 @@ export default function NavItems() {
   return (
     <div className="mt-4 p-4">
       {menuItems.map((item, index) => (
-        <div className = {`${index?'mt-9':'mt-4'} ${index < menuItems.length-1 ? 'border-b boder-solid border-b-slate-200':''}`}>
-          <NavSections section={item} key={item.type}/>
+        <div
+          className={`${index ? 'mt-9' : 'mt-4'} ${
+            index < menuItems.length - 1
+              ? 'border-b boder-solid border-b-slate-200'
+              : ''
+          }`}
+          key={item.type}
+        >
+          <NavSections section={item} />
         </div>
       ))}
     </div>

@@ -1,6 +1,9 @@
 import { useQuery } from '@tanstack/react-query'
+import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import { verifyUser } from '../../api/authentication/authentication'
 import { Navigate, Outlet, useLoaderData } from 'react-router-dom'
+import { setUser } from '../../store/user/user.reducer'
 
 // https://tkdodo.eu/blog/react-query-meets-react-router
 // https://reactrouter.com/en/main/guides/data-libs
@@ -25,6 +28,7 @@ export const authLoader = (queryClient) => async () => {
 }
 
 export default function Protect() {
+  // const dispatch = useDispatch()
   const initialData = useLoaderData()
   const { data: { document = null } = {} } =
     useQuery({ ...verificationQuery(), initialData }) || {}
@@ -35,6 +39,13 @@ export default function Protect() {
   //   useQuery(verificationQuery()),
   //   initialData
   // )
+  // dispatch(setUser(document))
+
+  // useEffect(() => {
+  //   console.log('set current user')
+  //   console.log(document)
+  // }, [])
+
   console.log('verify:', document)
   return !document ? (
     <Navigate to="/auth/login" />

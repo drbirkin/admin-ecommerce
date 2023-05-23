@@ -1,7 +1,12 @@
+import { useSelector } from 'react-redux'
+// import { selectCurrentUser } from '../../../store/user/user.selector'
 import { Outlet, useParams, Navigate, useLoaderData } from 'react-router-dom'
 
 export default function AuthLayout() {
+  // const user = useSelector(selectCurrentUser)
   const { authType } = useParams()
+  // console.log('check user: ', user)
+  // if (user) return <Navigate to="/" />
   return !authType ? (
     <Navigate to="login" />
   ) : (
